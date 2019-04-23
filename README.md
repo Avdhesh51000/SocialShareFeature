@@ -98,7 +98,7 @@ Define This in  initilizers file:
 ```ruby
 SocialShareFeature.allow_sites_for_share_button =  %w(twitter facebook weibo)
 ```
-Add Button With Image to view
+Add Link With to view
 ```ruby
      <%= social_share_button_tag(:url => "https://my shatring url/", :image => "https://my image url.com/", desc: 'The summary of page',class: 'my class to btn') %>
 ```
