@@ -34,6 +34,7 @@ Add this line to initilizers file:
 ```ruby
 	SocialShareFeature.facebook_token_for_count= "Your App ID|Your App Secret"
 ```
+
 	where **This is only Example use your own details**
 	Your App ID = "2254794191441963"
 	Your App Secret = "247c3641f30468d363bf8a827d6e673a"
