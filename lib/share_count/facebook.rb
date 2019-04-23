@@ -4,7 +4,7 @@ module ShareCount
     URL = 'https://graph.facebook.com/v3.0/'
 
     def shares!
-      return raise "It's Seems that you have not initilized ' SocialShareFeature.facebook_token_for_count = 515465|12135' in intilizer to use facebook count you need to do this please see usages in README." unless SocialShareFeature.facebook_token_for_count.present?
+      return raise "It's Seems that you have not initilized ' SocialShareFeature.facebook_token_for_count = Your App ID|Your App Secret' in intilizer to use facebook count you need to do this please see usages in README." unless SocialShareFeature.facebook_token_for_count.present?
       token = SocialShareFeature.facebook_token_for_count
       response = get(URL, params: {
                        id: checked_url,
