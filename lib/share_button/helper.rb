@@ -3,7 +3,7 @@ module ShareButton
 
     def social_share_button_tag(title, opts = {})
       @opts = opts
-      @opts[:allow_sites] ||= ShareButton.config.allow_sites
+      @opts[:allow_sites] ||= SocialShareFeature.allow_sites_for_share_button
       @html = []
       @html << "<div class='share-button' data-title='#{h title}' data-img='#{opts[:image]}'"
       @html << "data-url='#{opts[:url]}' data-desc='#{opts[:desc]}' data-via='#{opts[:via]}'>"
@@ -15,9 +15,9 @@ module ShareButton
     def generate_link
       @extra_data = {}
       @rel = @opts[:rel]
-      if @opts[:allow_sites].class == Array 
+      if @opts[:allow_sites].class == Array
         @opts[:allow_sites].each do |name|
-          links name   
+          links name
         end
       else
         links @opts[:allow_sites]
@@ -32,11 +32,11 @@ module ShareButton
       # "<img src='images/social-icon1.png' class='w-100'>"
       # link_title = t "social_share_button.share_to", :name => t("social_share_button.#{name.downcase}")
       @html << link_to("#", { :rel => ["nofollow", @rel],
-       "data-site" => name,
-       :class => @opts[:class],
-       :onclick => "return ShareButton.share(this);",
-       :title => h(link_title) }.merge(@extra_data).merge(special_data)) do 
-           @opts[:img].present? ? "<img src='#{@opts[:img][:src]}' class='#{@opts[:img][:class]}'>".html_safe : name.capitalize
+                              "data-site" => name,
+                              :class => @opts[:class],
+                              :onclick => "return ShareButton.share(this);",
+      :title => h(link_title) }.merge(@extra_data).merge(special_data)) do
+        @opts[:img].present? ? "<img src='#{@opts[:img][:src]}' class='#{@opts[:img][:class]}'>".html_safe : name.capitalize
       end
     end
 
