@@ -32,10 +32,11 @@ and go to https://developers.facebook.com/apps/YOURAPPID/settings/basic/ And cop
 
 Add this line to initilizers file:
 ```ruby
-	SocialShareFeature.facebook_token_for_count= "AppID|AppSecret"
-	AppID = "2254794191441963"
-	AppSecret = "247c3641f30468d363bf8a827d6e673a"
+	SocialShareFeature.facebook_token_for_count= "Your App ID|Your App Secret"
 ```
+	where **This is only Example use your own details**
+	Your App ID = "2254794191441963"
+	Your App Secret = "247c3641f30468d363bf8a827d6e673a"
 
 Get The Count of Social Share
 ```ruby
@@ -62,7 +63,7 @@ app/assets/javascripts/application.js
 // if you need use WeChat
 //= require share_button/wechat 
 ```
-	<strong>OR</strong>
+	**OR**
 
 For app/assets/javascripts/application.coffe
 ```coffe
@@ -75,7 +76,7 @@ app/assets/stylesheets/application.css
 ```css
 *= require share_button
 ```
-	<strong>OR</strong>
+	**OR**
 For app/assets/stylesheets/application.scss
 In Rails 4.1.6 , use @import to require files:
 ```scss
