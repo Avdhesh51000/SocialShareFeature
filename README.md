@@ -28,17 +28,17 @@ require 'SocialShare'
 
 Get The Count of Social Share
 ```ruby
- social_count = SocialShare::Count.selected "https://www.google.com/", %w(facebook reddit)
+ social_count = SocialShareFeature::Count.selected "https://www.google.com/", %w(facebook reddit)
 ```
 Get The List of Supported Network For Count:
 ```ruby
-SocialShare::Count.supported_networks
+SocialShareFeature::Count.supported_networks
  => [:facebook, :google, :reddit, :weibo] 
 ```
 
 Get The List of Supported Network For Share Button:
 ```ruby
-SocialShare::Button.supported_networks
+SocialShareFeature::Button.supported_networks
  => [:facebook, :google, :linkedin, :pinterest, :reddit, :twitter, :weibo] 
 ```
 
