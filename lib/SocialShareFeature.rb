@@ -11,4 +11,10 @@ module SocialShareFeature
   module Button
     extend ShareButton
   end
+  class << self
+    attr_accessor :facebook_token_for_count,:allow_sites_for_share_button
+    def configure
+      yield self.config
+    end
+  end
 end

@@ -23,23 +23,65 @@ Or install it yourself as:
 
 Add this line to your application's initializers file.
 ```ruby
-require 'SocialShare'
+require 'SocialShareFeature'
 ```
+For Facebook share count we need to initialize the facebook token which we can get from https://developers.facebook.com/ and create your own app
+and go to https://developers.facebook.com/apps/YOURAPPID/settings/basic/ And copy YOUR App ID and App Secret
+
+	EX: YOURAPPID = "2254794191441963"
+
+Add this line to initilizers file:
+```ruby
+	SocialShareFeature.facebook_token_for_count= "Your App ID|Your App Secret"
+```
+
+	where **This is only Example use your own details**
+	Your App ID = "2254794191441963"
+	Your App Secret = "247c3641f30468d363bf8a827d6e673a"
 
 Get The Count of Social Share
 ```ruby
- social_count = SocialShare::Count.selected "https://www.google.com/", %w(facebook reddit)
+ social_count = SocialShareFeature::Count.selected "https://www.google.com/", %w(facebook reddit)
 ```
 Get The List of Supported Network For Count:
 ```ruby
-SocialShare::Count.supported_networks
+SocialShareFeature::Count.supported_networks
  => [:facebook, :google, :reddit, :weibo] 
 ```
 
 Get The List of Supported Network For Share Button:
 ```ruby
-SocialShare::Button.supported_networks
+SocialShareFeature::Button.supported_networks
  => [:facebook, :google, :linkedin, :pinterest, :reddit, :twitter, :weibo] 
+```
+## To Use Social Share Button you required
+
+You need add require js file in your app assets files and add Jquery in your Project:
+
+app/assets/javascripts/application.js
+```js
+//= require share_button
+// if you need use WeChat
+//= require share_button/wechat 
+```
+	_OR_
+
+For app/assets/javascripts/application.coffe
+```coffe
+#= require share_button
+# if you need use WeChat
+#= require share_button/wechat 
+```
+
+app/assets/stylesheets/application.css
+```css
+*= require share_button
+```
+	**OR**
+For app/assets/stylesheets/application.scss
+In Rails 4.1.6 , use @import to require files:
+```scss
+@import "share_button";
 ```
 
 Add Button With Image to view
@@ -49,6 +91,16 @@ Add Button With Image to view
 Add a link Without image to view
 ```ruby
       <%= social_share_button_tag('Facebook',:allow_sites => 'facebook', :url => "https://my shatring url/", :image => "https://my image url.com/", desc: 'The summary of page',class: 'my class to btn') %>
+```
+
+If you want multiple socal share links at a same time Then you can use this
+Define This in  initilizers file:
+```ruby
+SocialShareFeature.allow_sites_for_share_button =  %w(twitter facebook weibo)
+```
+Add Link With to view
+```ruby
+     <%= social_share_button_tag(:url => "https://my shatring url/", :image => "https://my image url.com/", desc: 'The summary of page',class: 'my class to btn') %>
 ```
 
 ## Development
