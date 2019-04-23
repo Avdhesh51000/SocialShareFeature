@@ -64,7 +64,7 @@ app/assets/javascripts/application.js
 // if you need use WeChat
 //= require share_button/wechat 
 ```
-	**OR**
+	_OR_
 
 For app/assets/javascripts/application.coffe
 ```coffe
