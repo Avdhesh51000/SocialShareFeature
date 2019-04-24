@@ -1,8 +1,6 @@
 # SocialShareFeature
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/SocialShareFeature`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is a gem to help you quick create a share feature and social share counts in you Rails application.
 
 ## Installation
 
@@ -19,8 +17,9 @@ And then execute:
 Or install it yourself as:
 
     $ gem install SocialShareFeature
-## Usage
 
+## Configuration
+	
 Add this line to your application's initializers file.
 ```ruby
 require 'SocialShareFeature'
@@ -39,22 +38,36 @@ Add this line to initilizers file:
 	Your App ID = "2254794191441963"
 	Your App Secret = "247c3641f30468d363bf8a827d6e673a"
 
+If you want multiple socal share links at a same time Then you can use this
+Define This in  initilizers file to set default social platform:
+```ruby
+SocialShareFeature.allow_sites_for_share_button =  %w(twitter facebook weibo)
+```
+
+## Usage
+
 Get The Count of Social Share
 ```ruby
  social_count = SocialShareFeature::Count.selected "https://www.google.com/", %w(facebook reddit)
 ```
+OR you can use like this
+```ruby
+ SocialShare::Count.facebook "https://www.google.com/"
+```
+
 Get The List of Supported Network For Count:
 ```ruby
 SocialShareFeature::Count.supported_networks
  => [:facebook, :google, :reddit, :weibo] 
 ```
 
+## To Use Social Share Button you required
+
 Get The List of Supported Network For Share Button:
 ```ruby
 SocialShareFeature::Button.supported_networks
  => [:facebook, :google, :linkedin, :pinterest, :reddit, :twitter, :weibo] 
 ```
-## To Use Social Share Button you required
 
 You need add require js file in your app assets files and add Jquery in your Project:
 
@@ -93,25 +106,18 @@ Add a link Without image to view
       <%= social_share_button_tag('Facebook',:allow_sites => 'facebook', :url => "https://my shatring url/", :image => "https://my image url.com/", desc: 'The summary of page',class: 'my class to btn') %>
 ```
 
-If you want multiple socal share links at a same time Then you can use this
-Define This in  initilizers file:
+Add Link to the view for default social media platform defined in your initilizer.
 ```ruby
-SocialShareFeature.allow_sites_for_share_button =  %w(twitter facebook weibo)
-```
-Add Link With to view
-```ruby
-     <%= social_share_button_tag(:url => "https://my shatring url/", :image => "https://my image url.com/", desc: 'The summary of page',class: 'my class to btn') %>
+     <%= social_share_button_tag('',:url => "https://my shatring url/", :image => "https://my image url.com/", desc: 'The summary of page',class: 'my class to btn') %>
 ```
 
-## Development
+## Gem Link
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Ruby Gems:  [rubygems.org](https://rubygems.org/gems/SocialShareFeature).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/SocialShareFeature. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/Avdhesh51000/SocialShareFeature. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
