@@ -20,7 +20,8 @@ Gem::Specification.new do |spec|
     spec.metadata["allowed_push_host"] = "https://rubygems.org/"
     # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
     spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["source_code_uri"] = "https://github.com/Avdhesh51000/SocialShareFeature"
+    spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/#{spec.name}/#{spec.version}"
+    spec.metadata["source_code_uri"] = "https://github.com/Avdhesh51000/#{spec.name}/releases/tag/V#{spec.version}"
     # spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
@@ -32,10 +33,11 @@ Gem::Specification.new do |spec|
   spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   end
-  spec.files         = Dir.glob('lib/**/*')
+  # spec.files         = Dir.glob('lib/**/*')+ %w(README.md CHANGELOG.md LICENSE.txt)
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+  spec.files         = Dir.glob("{bin,lib,config,app}/**/*")+ %w(README.md CHANGELOG.md LICENSE.txt)
   spec.add_development_dependency "rails"
   spec.add_runtime_dependency "coffee-rails"
   spec.add_dependency 'rest-client'
